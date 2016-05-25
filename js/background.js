@@ -1,5 +1,14 @@
 ;(function(){
     
+    // Set the amount of motion blur 0..0.9
+    var motionBlurAmount = 0;
+    
+    // Video playback rate. 1: normal speed. 0.25 quarter speed.
+    var playbackRate = 0.75;
+    
+    // Realtime render speed
+    var fastFPS = false;
+    
     // create the background canvas
     var canvas = document.createElement('canvas');
     canvas.id = "backgroundcanvas";
@@ -11,20 +20,25 @@
     // create the video container
     var video = document.createElement('video');
     video.id = "backgroundvideo";
-    video.src = "videos/beach.webm";
-    video.playbackRate = 0.25;
+    video.src = "videos/beach.webm";    //DJI_0027_1.mp4
+    video.playbackRate = playbackRate;
     video.loop = true;
     video.addEventListener('play', function(){
-        draw(this, context, canvas.clientWidth, canvas.clientHeight);
+        draw();
     },false);
 
     document.body.appendChild(video);
     
-    function draw(v,c,w,h) {
-        if(v.paused || v.ended) return false;
-        c.globalAlpha = 0.1;
-        c.drawImage(v,0,0,w,h);
-        setTimeout(draw, 100, v, c, w, h);
+    function draw() {
+        if(video.paused || video.ended) return false;
+        context.globalAlpha = 1 - motionBlurAmount;
+        context.drawImage(video, 0, 0, canvas.clientWidth, canvas.clientHeight);
+        if (fastFPS) {
+            requestAnimationFrame(draw);
+        }
+        else {
+            setTimeout(draw, 60);
+        }
     }
 
     function initialiseVideo() {
