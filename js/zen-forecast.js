@@ -2,6 +2,9 @@
     
     var zen = window.zen = { };
     
+    zen.lat = -29.858680;
+    zen.lon = 31.021840;
+    
     // Store forecast data as an array on the zen object.
     // Each item represents a lat/lon location.
     zen.conditions = [ ];
@@ -43,6 +46,12 @@
      */
     zen.retrieveForecast = function(lat, lon) {
         
+        console.log('creating mock data for ' + lat + ',' + lon);
+        zen.createMockData();
+        window.disk.save('conditions', zen.conditions);
+        window.disk.save('last-api-call', new Date());
+        return;
+        
         // Check the localStorage for cached forecasts
         // and the last time checked
         
@@ -73,23 +82,59 @@
                 zen.conditions.push(point);
             }
             
+            // Save the data in local storage.
+            window.disk.save('conditions', zen.conditions);
+            window.disk.save('last-api-call', new Date());
+            
 		});
 
-    }
+    };
     
-    /**
-     * Store the forecast data in local storage.
-     */
-    zen.SaveData = function() {
-        
-    }
 
     /**
      * Load forecast data. Either from cache if available, or via the API.
      */
     zen.LoadData = function() {
+    
+        var lastCall = window.disk.load('last-api-call');
+        var data = window.disk.load('conditions');
         
+        if (data && lastCall) {
+            // Stored data is available. Check how old it is.
+            var thisMoment = moment();
+            var lastMoment = moment(lastCall);
+            var lastMinutes = thisMoment.diff(lastMoment, 'minutes');
+            if (lastMinutes > 60) {
+                zen.retrieveForecast(zen.lat, zen.lon);
+            }
+            else {
+                // Use cached data
+                zen.conditions = data;
+            }
+        }
+        else {
+            // No cached data available.
+            zen.retrieveForecast(zen.lat, zen.lon);
+        }
         
-    }
+        window.setTimeout(zen.LoadData, 60000);
+        
+        zen.DisplayData()
+        
+    };
+    
+    /**
+     * Display data points.
+     */
+    zen.DisplayData = function() {
+        var el = document.getElementById('currentTempAndConditions');
+        var t = '';
+        Object.keys(zen.conditions[0]).forEach(function(key){
+            t = t + key + ': ' + zen.conditions[0][key] + '</br>';
+        })
+        el.innerHTML = t;
+    };
+    
+    window.setTimeout(zen.LoadData, 5000);
     
 })();
