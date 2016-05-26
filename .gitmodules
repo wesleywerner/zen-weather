@@ -1,0 +1,3 @@
+[submodule "forecast.io-javascript-api"]
+	path = forecast.io-javascript-api
+	url = https://github.com/iantearle/forecast.io-javascript-api.git
