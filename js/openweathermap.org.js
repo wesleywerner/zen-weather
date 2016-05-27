@@ -4,6 +4,9 @@
     
     zen.config = { };
     
+    // set the callback fired when the conditions change
+    zen.callback = null;
+    
     // testing coordinates
     zen.config.lat = -29.858680;
     zen.config.lon = 31.021840;
@@ -147,12 +150,27 @@
      */
     zen.DisplayData = function() {
         
-        var el = document.getElementById('currentTempAndConditions');
-        var t = '';
-        Object.keys(zen.conditions).forEach(function(key){
-            t = t + key + ': ' + zen.conditions[key] + '</br>';
-        })
-        el.innerHTML = t;
+        if (zen.callback) {
+            zen.callback(zen.conditions);
+        }
+        
+        // zen.conditions.name
+        // "Durban"
+        // zen.conditions.main.temp
+        // 294.495
+        // zen.conditions.weather[0].description
+        // "clear sky"
+        // zen.conditions.weather[0].icon
+        // "01d"
+        // zen.conditions.weather[0].id
+        // 800
+        // zen.conditions.weather[0].main
+        // "Clear"
+        // zen.conditions.wind.deg
+        // 4.50061
+        // zen.conditions.wind.speed
+        // 4.12
+
     };
     
     window.setTimeout(zen.LoadData, 5000);
