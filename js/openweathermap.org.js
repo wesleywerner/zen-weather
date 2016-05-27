@@ -7,10 +7,6 @@
     // set the callback fired when the conditions change
     zen.callback = null;
     
-    // testing coordinates
-    zen.config.lat = -29.858680;
-    zen.config.lon = 31.021840;
-    
     // Store forecast data as an array on the zen object.
     // Each item represents a lat/lon location.
     zen.conditions = null;
@@ -117,7 +113,8 @@
         var data = window.disk.load('conditions');
         var config = window.disk.load('config');
         
-        config = config || { };
+        // TODO remove these testing coords. Add a UI to set city instead.
+        config = config || { lat:-29.858680, lon:31.021840 };
         zen.config = config;
         
         if (data && config.LastAPICall) {
