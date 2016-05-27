@@ -78,12 +78,12 @@
             return;
         }
         
-        console.log('creating mock data');
-        zen.createMockData();
-        window.disk.save('conditions', zen.conditions);
-        window.disk.save('config', zen.config);
-        zen.DisplayData();
-        return;
+        // console.log('creating mock data');
+        // zen.createMockData();
+        // window.disk.save('conditions', zen.conditions);
+        // window.disk.save('config', zen.config);
+        // zen.DisplayData();
+        // return;
         
         // Call the API for weather conditions
         zen.getJSON(APIURL, function(err, data) {
