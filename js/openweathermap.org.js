@@ -108,16 +108,16 @@
     /**
      * Load forecast data. Either from cache if available, or via the API.
      */
-    zen.LoadData = function() {
+    zen.LoadData = function(forced) {
     
         var data = window.disk.load('conditions');
         var config = window.disk.load('config');
         
         // TODO remove these testing coords. Add a UI to set city instead.
-        config = config || { lat:-29.858680, lon:31.021840 };
+        config = config || { };
         zen.config = config;
         
-        if (data && config.LastAPICall) {
+        if (data && config.LastAPICall && !forced) {
             // Stored data is available. Check how old it is.
             var thisMoment = moment();
             var lastMoment = moment(config.LastAPICall);
@@ -134,7 +134,7 @@
             }
         }
         else {
-            // No cached data available.
+            // No cached data available, or foced.
             zen.retrieveForecast();
         }
         
@@ -169,6 +169,18 @@
         // 4.12
 
     };
+    
+    /**
+     * Sets a new city name and forces reload of forecast.
+     */
+    zen.SetCityName = function(name) {
+        zen.config.cityname = name;
+        zen.config.cityid = null;
+        zen.config.lat = null;
+        zen.config.lon = null;
+        window.disk.save('config', zen.config);
+        zen.LoadData(true);
+    }
     
     document.addEventListener("DOMContentLoaded", function(event) {
         window.setTimeout(zen.LoadData, 1000);
