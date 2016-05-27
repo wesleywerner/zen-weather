@@ -173,6 +173,8 @@
 
     };
     
-    window.setTimeout(zen.LoadData, 5000);
+    document.addEventListener("DOMContentLoaded", function(event) {
+        window.setTimeout(zen.LoadData, 1000);
+    });
     
 })();
