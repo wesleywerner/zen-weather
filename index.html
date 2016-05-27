@@ -9,12 +9,28 @@
     </head>
     <body>
         
-        <div id="main-overlay" class="overlay animated retro-text" style="display: none">
+        <div id="main-overlay" class="overlay wide animated retro-text" style="display: none">
             <div id="city"></div>
             <div id="description"></div>
             <span id="temperature" class="odometer"></span>
             <span>&deg;</span>
             <img id="weatherIcon">
+        </div>
+        
+        <div id="zen-config-overlay" class="overlay wide solid animated" style="display: none">
+            <h1 class="retro-text">zen weather</h1>
+            <label>City: <input type="text" id="zen-config-city"></label>
+            <p>
+                <button id="zen-config-submit">Submit</button>
+                <button id="zen-config-cancel">Cancel</button>
+            </p>
+            <p>
+                Add credits and stuff here.
+            </p>
+        </div>
+        
+        <div class="overlay top-right">
+            <img id="zen-config-show" src="https://openclipart.org/image/16px/svg_to_png/28703/qubodup-Cog-cogwheel-gear-Zahnrad-6.png&disposition=attachment" alt="Cog, cogwheel, gear, Zahnrad" title="Cog, cogwheel, gear, Zahnrad by  qubodup ( https://openclipart.org/user-detail/qubodup )" />
         </div>
         
         <script type="text/javascript" src="js/moment.js"></script>

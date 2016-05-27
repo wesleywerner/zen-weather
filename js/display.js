@@ -38,6 +38,34 @@
 
   }
   
+  function ShowZenConfig() {
+    var el = document.getElementById('zen-config-city');
+    el.value = zen.config.cityname || '';
+    var el = document.getElementById('zen-config-overlay');
+    el.classList.remove('zoomIn');
+    el.classList.remove('zoomOut');
+    el.classList.add('zoomIn');
+    el.style.display = '';
+  }
+  
+  function HideZenConfig() {
+    var el = document.getElementById('zen-config-overlay');
+    el.classList.remove('zoomOut');
+    el.classList.add('zoomOut');
+  }
+  
+  function SaveZenConfig() {
+    var el = document.getElementById('zen-config-city');
+    HideZenConfig();
+    zen.SetCityName(el.value);
+  }
+  
+
+  // May need to call these on dom ready:
+  document.getElementById('zen-config-show').addEventListener('click', ShowZenConfig);
+  document.getElementById('zen-config-cancel').addEventListener('click', HideZenConfig);
+  document.getElementById('zen-config-submit').addEventListener('click', SaveZenConfig);
+  
   // Register our update method with the zen weather method.
   // We get called every time the weather data changes.
   zen.callback = UpdateUI;
