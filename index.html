@@ -5,13 +5,16 @@
         <link rel="stylesheet" type="text/css" href="styles/zen.css">
         <link rel="stylesheet" type="text/css" href="styles/background.css">
         <link rel="stylesheet" type="text/css" href="styles/animate.css">
+        <link rel="stylesheet" type="text/css" href="styles/odometer-theme-default.css" />
     </head>
     <body>
         
-        <div id="overlay" class="glowing-text animated">
+        <div id="main-overlay" class="overlay animated retro-text" style="display: none">
+            <div id="city"></div>
+            <div id="description"></div>
+            <span id="temperature" class="odometer"></span>
+            <span>&deg;</span>
             <img id="weatherIcon">
-            <h1 id="currentOverview"></h1>
-            <h2 id="currentTemp"></h2>
         </div>
         
         <script type="text/javascript" src="js/moment.js"></script>
@@ -21,6 +24,7 @@
 
         <script type="text/javascript" src="js/openweathermap.org.js"></script>
         <script type="text/javascript" src="js/display.js"></script>
+        <script type="text/javascript" src="js/odometer.min.js"></script>
         
         <!-- Use a video background -->
         <!--<script type="text/javascript" src="js/background.js"></script>-->

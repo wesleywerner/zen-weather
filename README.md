@@ -16,3 +16,6 @@ https://www.youtube.com/watch?v=qMxCG-GjcAU
 Animate.css
 Daniel Eden
 https://daneden.github.io/animate.css/
+
+Odometer
+http://github.hubspot.com/odometer/

@@ -25,15 +25,16 @@
         // zen.conditions.wind.speed
         // 4.12
         
-        var temp = Math.round(data.main.temp-273.15) + ' degrees';
-        var overview = data.name + ', ' + data.weather[0].description;
-        
-        document.getElementById('currentOverview').innerHTML = overview;
-        document.getElementById('currentTemp').innerHTML = temp;
+        var temp = Math.round(data.main.temp-273.15);
+
+        document.getElementById('city').innerHTML = data.name;
+        document.getElementById('temperature').innerHTML = temp;
+        document.getElementById('description').innerHTML = data.weather[0].description;
         document.getElementById('weatherIcon').src = 'http://openweathermap.org/img/w/'+data.weather[0].icon+'.png';
         
-        document.getElementById('overlay').classList.remove('rotateInDownLeft');
-        document.getElementById('overlay').classList.add('rotateInDownLeft');
+        document.getElementById('main-overlay').style.display = '';
+        document.getElementById('main-overlay').classList.remove('zoomIn');
+        document.getElementById('main-overlay').classList.add('zoomIn');
 
   }
   
