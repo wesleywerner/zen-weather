@@ -25,7 +25,7 @@
         // zen.conditions.wind.speed
         // 4.12
         
-        var temp = Math.round(data.main.temp-273.15);
+        var temp = Math.round((data.main.temp-273.15)*10)/10;
 
         document.getElementById('city').innerHTML = data.name;
         document.getElementById('temperature').innerHTML = temp;
