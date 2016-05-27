@@ -118,7 +118,7 @@
         var config = window.disk.load('config');
         
         config = config || { };
-        if (config && !zen.config) { zen.config = config };
+        zen.config = config;
         
         if (data && config.LastAPICall) {
             // Stored data is available. Check how old it is.
