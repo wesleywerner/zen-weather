@@ -4,7 +4,7 @@
     var motionBlurAmount = 0;
     
     // Video playback rate. 1: normal speed. 0.25 quarter speed.
-    var playbackRate = 0.75;
+    var playbackRate = 0.5;
     
     // Realtime render speed
     var fastFPS = false;
@@ -20,7 +20,7 @@
     // create the video container
     var video = document.createElement('video');
     video.id = "backgroundvideo";
-    video.src = "videos/beach.webm";    //DJI_0027_1.mp4
+    video.src = "videos/DJI_0027_1.mp4";    //DJI_0027_1.mp4
     video.playbackRate = playbackRate;
     video.loop = true;
     video.addEventListener('play', function(){
@@ -32,7 +32,7 @@
     function draw() {
         if(video.paused || video.ended) return false;
         context.globalAlpha = 1 - motionBlurAmount;
-        context.drawImage(video, 0, 0, canvas.clientWidth, canvas.clientHeight);
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
         if (fastFPS) {
             requestAnimationFrame(draw);
         }
@@ -42,6 +42,7 @@
     }
 
     function initialiseVideo() {
+        console.log('Loading Video...');
         if (video.readyState >= 3) {
             video.play();
         }
@@ -51,7 +52,10 @@
     }
 
     // start video after a short wait
-    window.setTimeout(initialiseVideo, 3000);
+    document.addEventListener("DOMContentLoaded", function(event) {
+        window.setTimeout(initialiseVideo, 3000);
+    });
+    
     
     
 })();
