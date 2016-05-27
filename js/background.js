@@ -20,7 +20,7 @@
     // create the video container
     var video = document.createElement('video');
     video.id = "backgroundvideo";
-    video.src = "videos/DJI_0027_1.mp4";    //DJI_0027_1.mp4
+    video.src = "videos/lighthouse480.webm";
     video.playbackRate = playbackRate;
     video.loop = true;
     video.addEventListener('play', function(){
