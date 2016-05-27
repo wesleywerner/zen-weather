@@ -75,11 +75,12 @@
             return;
         }
         
-        // console.log('creating mock data');
-        // zen.createMockData();
-        // window.disk.save('conditions', zen.conditions);
-        // window.disk.save('config', zen.config);
-        // return;
+        console.log('creating mock data');
+        zen.createMockData();
+        window.disk.save('conditions', zen.conditions);
+        window.disk.save('config', zen.config);
+        zen.DisplayData();
+        return;
         
         // Call the API for weather conditions
         zen.getJSON(APIURL, function(err, data) {
@@ -98,6 +99,7 @@
             zen.config.LastAPICall = new Date();
             window.disk.save('conditions', zen.conditions);
             window.disk.save('config', zen.config);
+            zen.DisplayData();
           }
         });
 
@@ -125,7 +127,10 @@
             }
             else {
                 // Use cached data
-                zen.conditions = data;
+                if (!zen.conditions) {
+                  zen.conditions = data;
+                  zen.DisplayData();
+                }
             }
         }
         else {
@@ -135,14 +140,13 @@
         
         window.setTimeout(zen.LoadData, 60000);
         
-        zen.DisplayData()
-        
     };
     
     /**
      * Display data points.
      */
     zen.DisplayData = function() {
+        
         var el = document.getElementById('currentTempAndConditions');
         var t = '';
         Object.keys(zen.conditions).forEach(function(key){
@@ -151,6 +155,6 @@
         el.innerHTML = t;
     };
     
-    //window.setTimeout(zen.LoadData, 5000);
+    window.setTimeout(zen.LoadData, 5000);
     
 })();
