@@ -1,6 +1,9 @@
 body {
     margin: 0;
     background: #003366;
+    background-image: url(/backgrounds/beach-uhd.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #loading {
