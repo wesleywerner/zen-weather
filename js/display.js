@@ -30,6 +30,7 @@
         
         document.getElementById('currentOverview').innerHTML = overview;
         document.getElementById('currentTemp').innerHTML = temp;
+        document.getElementById('weatherIcon').src = 'http://openweathermap.org/img/w/'+data.weather[0].icon+'.png';
 
   }
   
