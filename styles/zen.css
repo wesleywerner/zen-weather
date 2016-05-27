@@ -16,7 +16,28 @@ body {
 
 #overlay {
     position: absolute;
-    width: 100%;
+    width: 95%;
     height: 100%;
     z-index: 1;
+    padding-left: 5%;
+}
+
+.glowing-text {
+	color: #fff;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
+	letter-spacing: 5px;
+	font: 3em 'MisoRegular';
+}
+
+.retro-text {
+	color: #d7ceb2;
+	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
+	font: 3em 'BazarMedium';
+	letter-spacing: 10px;
+}
+
+#weatherIcon {
+    float: right;
+    margin: 0 0 10px 10px;
+    display: none;
 }
