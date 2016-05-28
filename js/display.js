@@ -106,28 +106,31 @@
   setInterval(function(){
     
     // wrench
+    var wrench = document.getElementById('zen-config-show');
     if ((zen.config.cityname || '') == '') {
-      var el = document.getElementById('zen-config-show');
-      el.opacity = 1;
-      if (el.classList.contains('flash')) {
-        el.classList.remove('flash');
+      wrench.opacity = 1;
+      if (wrench.classList.contains('flash')) {
+        wrench.classList.remove('flash');
       }
       else {
-        el.classList.add('flash');
+        wrench.classList.add('flash');
       }
     }
     else {
-      document.getElementById('zen-config-show').style.opacity = 0.1;
+      wrench.classList.remove('flash');
+      wrench.style.opacity = 0.1;
     }
     
     // spinner
     var video = document.getElementById('backgroundvideo');
+    var spinner = document.getElementById('video-loading-spinner');
     if (video && video.readyState > 0 && video.readyState < 3) {
-      document.getElementById('video-loading-spinner').style.display = 'block';
+      spinner.style.display = 'block';
     }
     else {
-      document.getElementById('video-loading-spinner').style.display = 'none';
+      spinner.style.display = 'none';
     }
+    
   }, 5000);
   
 })();
