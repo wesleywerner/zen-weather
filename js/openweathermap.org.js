@@ -31,7 +31,7 @@
      */
     zen.createMockData = function() {
         zen.config.LastAPICall = new Date();
-        zen.conditions = JSON.parse("{\"coord\":{\"lon\":31.03,\"lat\":-29.86},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01n\"}],\"base\":\"cmc stations\",\"main\":{\"temp\":293.778,\"pressure\":1036.34,\"humidity\":100,\"temp_min\":293.778,\"temp_max\":293.778,\"sea_level\":1039.83,\"grnd_level\":1036.34},\"wind\":{\"speed\":2.72,\"deg\":30.5007},\"clouds\":{\"all\":0},\"dt\":1464290372,\"sys\":{\"message\":0.0086,\"country\":\"ZA\",\"sunrise\":1464237638,\"sunset\":1464275118},\"id\":1007311,\"name\":\"Durban\",\"cod\":200}");
+        return JSON.parse("{\"coord\":{\"lon\":31.03,\"lat\":-29.86},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01n\"}],\"base\":\"cmc stations\",\"main\":{\"temp\":293.778,\"pressure\":1036.34,\"humidity\":100,\"temp_min\":293.778,\"temp_max\":293.778,\"sea_level\":1039.83,\"grnd_level\":1036.34},\"wind\":{\"speed\":2.72,\"deg\":30.5007},\"clouds\":{\"all\":0},\"dt\":1464290372,\"sys\":{\"message\":0.0086,\"country\":\"ZA\",\"sunrise\":1464237638,\"sunset\":1464275118},\"id\":1007311,\"name\":\"Durban\",\"cod\":200}");
     }
     
     /**
@@ -80,13 +80,6 @@
             return;
         }
         
-        // console.log('creating mock data');
-        // zen.createMockData();
-        // window.disk.save('conditions', zen.conditions);
-        // window.disk.save('config', zen.config);
-        // zen.DisplayData();
-        // return;
-        
         // Call the API for weather conditions
         zen.getJSON(APIURL, function(err, data) {
           if (err != null) {
@@ -122,6 +115,9 @@
         // TODO remove these testing coords. Add a UI to set city instead.
         config = config || { };
         zen.config = config;
+
+        console.log('creating mock data');
+        data = zen.createMockData();
         
         if (data && config.LastAPICall && !forced) {
             // Stored data is available. Check how old it is.
