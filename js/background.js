@@ -12,7 +12,10 @@
     bg.fastFPS = false;
     
     // playback quality determines the video played, and the rendering frequency.
-    bg.quality = 0;
+    bg.quality = 480;
+    
+    // Sets if the background is an animated video
+    bg.animated = false;
     
     // the theme determines the video and background images displayed.
     bg.theme = 'lighthouse';
@@ -48,11 +51,11 @@
     
     function draw() {
         
-        if (bg.quality == 0) {
-            // Draw the still image to the canvsa
+        if (bg.animated == false || video.readyState < 3) {
+            // Draw the still on the canvas.
+            // This draw() method is called by the still onload event.
             context.globalAlpha = 1;
             context.drawImage(still, 0, 0, canvas.width, canvas.height);
-            //setTimeout(draw, 600);
         }
         else {
             
@@ -74,9 +77,10 @@
      * Values include 0, 480, 720, 1080.
      * 0 displays a still background.
      */
-    bg.setThemeAndQuality = function(theme, quality) {
+    bg.setThemeAndQuality = function(theme, quality, animated) {
         bg.theme = theme;
         bg.quality = quality;
+        bg.animated = animated;
         ApplyThemeAndQuality();
     }
     
@@ -85,15 +89,15 @@
      */
     function ApplyThemeAndQuality() {
         video.pause();
-        if (bg.quality == 0) {
-            still.src = 'backgrounds/beach-sd.jpg';
-            video.src = '';
-            // the "still" element onload will draw to the canvas once loaded.
-        }
-        else {
+
+        // always display background, especially when video is still loading
+        still.src = 'themes/'+bg.theme+bg.quality.toString()+'.jpg';
+
+        if (bg.animated) {
             video.src = 'videos/'+bg.theme+bg.quality.toString()+'.webm';
             initialiseVideo();
         }
+        
     }
 
     function initialiseVideo() {
@@ -108,8 +112,7 @@
 
     // start video after a short wait
     document.addEventListener("DOMContentLoaded", function(event) {
-        //window.setTimeout(initialiseVideo, 3000);
-        ApplyThemeAndQuality();
+        bg.setThemeAndQuality('lighthouse', 480, true);
     });
     
     
