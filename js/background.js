@@ -112,7 +112,7 @@
             bg.setThemeAndQuality('lighthouse', settings.quality, settings.animated);
         }
         else {
-            bg.setThemeAndQuality('lighthouse', 480, true);
+            bg.setThemeAndQuality('lighthouse', 720, false);
         }
         draw();
     });
