@@ -39,8 +39,22 @@
   }
   
   function ShowZenConfig() {
+    
+    // Load city value
     var el = document.getElementById('zen-config-city');
     el.value = zen.config.cityname || '';
+    
+    // Load quality value
+    var el = document.getElementsByName('zen-config-quality');
+    for (var i=0; i<el.length; i++) {
+        if (el[i].value == zen.background.quality.toString()) el[i].checked = true;
+    }
+    
+    // Load the animated background value
+    var el = document.getElementsByName('zen-config-animated')[0];
+    el.checked = zen.background.animated;
+    
+    // Show the config overlay
     var el = document.getElementById('zen-config-overlay');
     el.classList.remove('zoomIn');
     el.classList.remove('zoomOut');
@@ -55,9 +69,25 @@
   }
   
   function SaveZenConfig() {
+    
+    // Read city name
     var el = document.getElementById('zen-config-city');
+    
+    // Read quality
+    var quality = 0;
+    var el = document.getElementsByName('zen-config-quality');
+    for (var i=0; i<el.length; i++) {
+        if (el[i].checked) quality = parseInt(el[i].value);
+    }
+    
+    // Read animated background
+    var el = document.getElementsByName('zen-config-animated')[0];
+    var animated = el.checked || false;
+    
+    // Hide config overlay and apply values
     HideZenConfig();
     zen.SetCityName(el.value);
+    if (quality > 0) zen.background.setThemeAndQuality('lighthouse', quality, animated);
   }
   
 

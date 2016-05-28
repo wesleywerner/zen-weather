@@ -40,9 +40,7 @@
     // create the video container
     var video = document.createElement('video');
     video.id = "backgroundvideo";
-    //video.src = "videos/lighthouse480.webm";
     video.playbackRate = bg.playbackRate;
-    video.loop = true;
     video.addEventListener('play', function(){
         draw();
     },false);
@@ -95,13 +93,14 @@
 
         if (bg.animated) {
             video.src = 'themes/'+bg.theme+bg.quality.toString()+'.webm';
+            video.loop = true;
             initialiseVideo();
         }
         
     }
 
     function initialiseVideo() {
-        if (video.readyState >= 3) {
+        if (video.readyState == 4) {
             video.play();
         }
         else {
