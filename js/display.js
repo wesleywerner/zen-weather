@@ -71,7 +71,8 @@
   function SaveZenConfig() {
     
     // Read city name
-    var el = document.getElementById('zen-config-city');
+    var cityname = document.getElementById('zen-config-city').value;
+    
     
     // Read quality
     var quality = 0;
@@ -86,7 +87,7 @@
     
     // Hide config overlay and apply values
     HideZenConfig();
-    zen.SetCityName(el.value);
+    zen.SetCityName(cityname);
     if (quality > 0) zen.background.setThemeAndQuality('lighthouse', quality, animated);
   }
   
