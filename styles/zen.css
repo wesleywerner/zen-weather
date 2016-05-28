@@ -27,18 +27,21 @@ body {
     right: 6px;
 }
 
-.glowing-text {
-	color: #fff;
-	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
-	letter-spacing: 5px;
-	font: 3em 'MisoRegular';
-}
-
 .retro-text {
-	color: #55ceb2;
-	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
-	font: 3em 'BazarMedium';
-	letter-spacing: 10px;
+    font-family: times new roman;
+	color: #fff;
+	font-size: 4em;
+    
+    /* outline */
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+    
+    /* shadow */
+    text-shadow: 1px 1px 3px #000;
+    
 }
 
 #weatherIcon {
