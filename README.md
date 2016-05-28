@@ -14,8 +14,8 @@ https://daneden.github.io/animate.css/
 Odometer by HubSpot
 http://github.hubspot.com/odometer/
 
-Cogwheel icon by qubodup
-https://openclipart.org/detail/28703/cog-cogwheel-gear-zahnrad
+Wrench icon by qubodup
+https://openclipart.org/detail/14324/16x16px-wrench
 
 pure-css-switcher by rebelliard
 https://github.com/rebelliard/pure-css-switcher

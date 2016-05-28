@@ -101,7 +101,25 @@
   zen.callback = UpdateUI;
   
   // An ongoing timer to show the video loading spinner
+  // and flash the configuration wrench
   setInterval(function(){
+    
+    // wrench
+    if ((zen.config.cityname || '') == '') {
+      var el = document.getElementById('zen-config-show');
+      el.opacity = 1;
+      if (el.classList.contains('flash')) {
+        el.classList.remove('flash');
+      }
+      else {
+        el.classList.add('flash');
+      }
+    }
+    else {
+      document.getElementById('zen-config-show').style.opacity = 0.1;
+    }
+    
+    // spinner
     var video = document.getElementById('backgroundvideo');
     if (video && video.readyState > 0 && video.readyState < 3) {
       document.getElementById('video-loading-spinner').style.display = 'block';

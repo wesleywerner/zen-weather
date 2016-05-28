@@ -112,12 +112,11 @@
         var data = window.disk.load('conditions');
         var config = window.disk.load('config');
         
-        // TODO remove these testing coords. Add a UI to set city instead.
         config = config || { };
         zen.config = config;
 
-        console.log('creating mock data');
-        data = zen.createMockData();
+        //console.log('creating mock data');
+        //data = zen.createMockData();
         
         if (data && config.LastAPICall && !forced) {
             // Stored data is available. Check how old it is.
