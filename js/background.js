@@ -26,9 +26,7 @@
     still.id = 'still';
     still.style.display = 'none';
     document.body.appendChild(still);
-    // draw the still once it has loaded
-    still.addEventListener('load', draw);
-    
+
     // create the background canvas
     var canvas = document.createElement('canvas');
     canvas.id = "backgroundcanvas";
@@ -41,23 +39,12 @@
     var video = document.createElement('video');
     video.id = "backgroundvideo";
     video.playbackRate = bg.playbackRate;
-    video.addEventListener('play', function(){
-        draw();
-    },false);
 
     document.body.appendChild(video);
     
     function draw() {
         
-        if (bg.animated == false || video.readyState < 3) {
-            // Draw the still on the canvas.
-            // This draw() method is called by the still onload event.
-            context.globalAlpha = 1;
-            context.drawImage(still, 0, 0, canvas.width, canvas.height);
-        }
-        else {
-            
-            if(video.paused || video.ended) return false;
+        if (bg.animated) {
             context.globalAlpha = 1 - bg.motionBlurAmount;
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             if (bg.fastFPS) {
@@ -66,6 +53,11 @@
             else {
                 setTimeout(draw, 60);
             }
+        }
+        else {
+            context.globalAlpha = 1;
+            context.drawImage(still, 0, 0, canvas.width, canvas.height);
+            setTimeout(draw, 5000);
         }
         
     }
@@ -100,18 +92,17 @@
     }
 
     function initialiseVideo() {
-        if (video.readyState == 4) {
+        if (video.readyState >= 3) {
             video.play();
         }
-        else {
-            // Retry to play the video
-            window.setTimeout(initialiseVideo, 3000);
-        }
+        // Retry to play the video
+        window.setTimeout(initialiseVideo, 3000);
     }
 
     // start video after a short wait
     document.addEventListener("DOMContentLoaded", function(event) {
         bg.setThemeAndQuality('lighthouse', 480, true);
+        draw();
     });
     
     
