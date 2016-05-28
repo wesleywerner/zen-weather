@@ -138,7 +138,7 @@
             zen.retrieveForecast();
         }
         
-        window.setTimeout(zen.LoadData, 60000);
+        window.setTimeout(zen.LoadData, 10000);
         
     };
     
