@@ -90,6 +90,8 @@
             initialiseVideo();
         }
         
+        // Save settings
+        disk.save('background', bg);
     }
 
     function initialiseVideo() {
@@ -102,7 +104,16 @@
 
     // start video after a short wait
     document.addEventListener("DOMContentLoaded", function(event) {
-        bg.setThemeAndQuality('lighthouse', 480, true);
+        
+        // load saved settings
+        var settings = disk.load('background');
+        
+        if (settings) {
+            bg.setThemeAndQuality('lighthouse', settings.quality, settings.animated);
+        }
+        else {
+            bg.setThemeAndQuality('lighthouse', 480, true);
+        }
         draw();
     });
     
