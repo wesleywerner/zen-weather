@@ -1,10 +1,5 @@
 body {
     margin: 0;
-    color: #fff;
-    background: #003366;
-    background-image: url(/backgrounds/beach-uhd.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .overlay {
@@ -22,7 +17,7 @@ body {
 }
 
 .solid {
-    background: rgb(32, 32, 64);
+    background: #ddf;
     border: 2px solid;
     border-color: #000;
 }
@@ -40,7 +35,7 @@ body {
 }
 
 .retro-text {
-	color: #d7ceb2;
+	color: #55ceb2;
 	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
 	font: 3em 'BazarMedium';
 	letter-spacing: 10px;
