@@ -100,4 +100,15 @@
   // We get called every time the weather data changes.
   zen.callback = UpdateUI;
   
+  // An ongoing timer to show the video loading spinner
+  setInterval(function(){
+    var video = document.getElementById('backgroundvideo');
+    if (video && video.readyState > 0 && video.readyState < 3) {
+      document.getElementById('video-loading-spinner').style.display = 'block';
+    }
+    else {
+      document.getElementById('video-loading-spinner').style.display = 'none';
+    }
+  }, 5000);
+  
 })();

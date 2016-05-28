@@ -82,6 +82,7 @@
 
         // always display background, especially when video is still loading
         still.src = 'themes/'+bg.theme+bg.quality.toString()+'.jpg';
+        video.src = '';
 
         if (bg.animated) {
             video.src = 'themes/'+bg.theme+bg.quality.toString()+'.webm';

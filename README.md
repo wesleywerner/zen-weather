@@ -22,3 +22,6 @@ https://github.com/rebelliard/pure-css-switcher
 
 Super Simple CSS Buttons by Monji Dolon
 http://devgrow.com/super-simple-css-buttons/
+
+SpinKit CSS spinner by tobiasahlin
+https://github.com/tobiasahlin/SpinKit

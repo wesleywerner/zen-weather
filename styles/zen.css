@@ -27,6 +27,10 @@ body {
     right: 6px;
 }
 
+.loading-spinner {
+    left: 30px;
+}
+
 .retro-text {
     font-family: times new roman;
 	color: #fff;
