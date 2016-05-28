@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="styles/background.css">
         <link rel="stylesheet" type="text/css" href="styles/animate.css">
         <link rel="stylesheet" type="text/css" href="styles/odometer-theme-default.css" />
+        <link rel="stylesheet" type="text/css" href="styles/rb-switcher.min.css"/>
     </head>
     <body>
         
@@ -18,12 +19,34 @@
         </div>
         
         <div id="zen-config-overlay" class="overlay wide solid animated" style="display: none">
+            
+            <!-- Title -->
             <h1 class="retro-text">zen weather</h1>
-            <label>City: <input type="text" id="zen-config-city"></label>
-            <p>
-                <button id="zen-config-submit">Submit</button>
-                <button id="zen-config-cancel">Cancel</button>
-            </p>
+            
+            <!-- City input -->
+            <input type="text" id="zen-config-city" placeholder="Your City Name">
+            
+            <!-- Quality Options -->
+            <div>
+                <div class="inline-panel">
+                    <h3>Quality</h3>
+                    <label class="rb-switcher"><input type="radio" name="quality" value="480">SD 480p <i></i></label><br/>
+                    <label class="rb-switcher"><input type="radio" name="quality" value="720">HD 720p <i></i></label><br/>
+                    <label class="rb-switcher"><input type="radio" name="quality" value="1080">UHD 1080p <i></i></label>
+                </div>
+                <div class="inline-panel">
+                    <h3>Animated</h3>
+                    <label class="rb-switcher"><input type="checkbox" name="zen-config-animate-background" value="true" /><i></i></label>
+                </div>
+            </div>
+            
+            <!-- Save and Cancel buttons -->
+            <div>
+                <button class="button green large" id="zen-config-submit">Submit</button>
+                <button class="button blue large" id="zen-config-cancel">Cancel</button>
+            </div>
+            
+
             <p>
                 Add credits and stuff here.
             </p>
