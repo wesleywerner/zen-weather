@@ -1,4 +1,6 @@
-# zen-weather
+# Zen Weather
+
+Zen weather displays your forecast with beautiful still on animated backgrounds.
 
 # References
 
