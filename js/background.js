@@ -94,7 +94,7 @@
         still.src = 'themes/'+bg.theme+bg.quality.toString()+'.jpg';
 
         if (bg.animated) {
-            video.src = 'videos/'+bg.theme+bg.quality.toString()+'.webm';
+            video.src = 'themes/'+bg.theme+bg.quality.toString()+'.webm';
             initialiseVideo();
         }
         
