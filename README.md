@@ -19,3 +19,6 @@ https://daneden.github.io/animate.css/
 
 Odometer
 http://github.hubspot.com/odometer/
+
+cogwheel By qubodup
+https://openclipart.org/detail/28703/cog-cogwheel-gear-zahnrad
