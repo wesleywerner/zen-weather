@@ -44,6 +44,13 @@
     
     function draw() {
         
+        // scale canvas to ratio
+        var ratio = still.height / still.width;
+        canvas.width = canvas.clientWidth;
+        canvas.height = Math.min( window.innerHeight - 10, canvas.width * ratio);
+        var topMargin = (window.innerHeight - canvas.height) / 2;
+        canvas.style.marginTop = topMargin.toString() + 'px';
+        
         if (bg.animated) {
             context.globalAlpha = 1 - bg.motionBlurAmount;
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
